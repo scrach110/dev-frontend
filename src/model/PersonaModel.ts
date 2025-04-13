@@ -1,5 +1,5 @@
 export type PersonaModel = {
-    nombre:string,
-    apellido:string,
-    DNI:string
-}
+    nombre: string;
+    apellido: string;
+    DNI: string;
+};
