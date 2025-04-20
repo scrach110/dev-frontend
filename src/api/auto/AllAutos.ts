@@ -1,13 +1,8 @@
 import { AutoModel } from '../../model/AutoModel';
-import axios from 'axios';
-
-const autosBack = axios.create({
-    baseURL: 'http://localhost:3000/autos',
-    withCredentials: true
-});
+import { AutoApi } from '../apiBase/AutoApi';
 
 const allAutos = async () => {
-    const response = await autosBack.get('');
+    const response = await AutoApi.get('');
 
     const autos: AutoModel[] = response.data.map((auto: AutoModel) => ({
         marca: auto.marca,
