@@ -3,4 +3,5 @@ export type AutoModel = {
     modelo: string;
     año: number;
     patente: string;
+    idPersona: string;
 };

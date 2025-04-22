@@ -8,7 +8,8 @@ const allAutos = async () => {
         marca: auto.marca,
         modelo: auto.modelo,
         año: auto.año,
-        patente: auto.patente
+        patente: auto.patente,
+        idPersona: auto.idPersona
     }));
     return autos;
 };

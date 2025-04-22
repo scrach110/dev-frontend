@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import PersonaCompleta from '../../model/PersonaCompleta';
 import { PersonaById } from '../../api/persona/PersonaById';
 import { Navbar } from '../../components/Navbar';
+import { BorrarPersonaButton } from '../../helps/BorrarPersonaButton';
 
 export const PersonaValues = () => {
     const { id } = useParams<{ id: string }>();
     const idPersona = String(id);
     const [persona, setPersona] = useState<PersonaCompleta | null>(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPersona = async () => {
@@ -17,6 +20,14 @@ export const PersonaValues = () => {
         fetchPersona();
     }, [idPersona]);
 
+    const EditarPersonaHandler = () => {
+        navigate(`/persona/${idPersona}/edit`);
+    };
+
+    const DeletePersonaHandler = () => {
+        navigate('/persona/all');
+    };
+
     const AgregarAutoHandler = () => {};
 
     return (
@@ -24,6 +35,10 @@ export const PersonaValues = () => {
             <div className="persona-container">
                 <h2 className="titulo">Detalles de la Persona</h2>
                 <table className="persona-table">
+                    <button className="editar-button" onClick={EditarPersonaHandler}>
+                        Editar
+                    </button>
+                    <BorrarPersonaButton idPersona={idPersona} onDeleteSuccess={DeletePersonaHandler} />
                     <tbody>
                         <tr>
                             <td className="label">Nombre</td>
@@ -35,7 +50,7 @@ export const PersonaValues = () => {
                         </tr>
                         <tr>
                             <td className="label">DNI</td>
-                            <td>{persona?.DNI}</td>
+                            <td>{persona?.dni}</td>
                         </tr>
                         <tr>
                             <td className="label">Fecha de Nacimiento</td>
@@ -47,6 +62,9 @@ export const PersonaValues = () => {
                         </tr>
                         <tr>
                             <td className="label">Autos</td>
+                            <button className="boton-verde" onClick={AgregarAutoHandler}>
+                                Agregar Auto
+                            </button>
                             <td>
                                 {persona?.autos.length > 0 ? (
                                     <ul>
@@ -61,8 +79,6 @@ export const PersonaValues = () => {
                                 )}
                             </td>
                         </tr>
-                        <h4> Autos </h4>
-                        <button onClick={AgregarAutoHandler}> Agregar Auto</button>
                     </tbody>
                 </table>
             </div>

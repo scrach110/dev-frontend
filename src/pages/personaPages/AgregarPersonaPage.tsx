@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import PersonaCompleta from '../../model/PersonaCompleta';
 import { AddPersona } from '../../api/persona/AddPersona';
 import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../../components/Navbar';
 
 export const AgregarPersonaPage = () => {
     const navigate = useNavigate();
@@ -93,6 +94,7 @@ export const AgregarPersonaPage = () => {
                     </button>
                 </form>
             </div>
+            <Navbar />
         </div>
     );
 };

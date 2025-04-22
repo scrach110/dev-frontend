@@ -11,6 +11,7 @@ export const AutoTable: React.FC<{ autos: AutoModel[] }> = ({ autos }) => {
                         <th>Modelo</th>
                         <th>Año</th>
                         <th>Patente</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>

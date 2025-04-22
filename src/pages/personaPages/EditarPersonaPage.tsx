@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { PersonaById } from '../../api/persona/PersonaById';
 import { EditPersona } from '../../api/persona/EditPersona';
 import PersonaCompleta from '../../model/PersonaCompleta';
+import { Navbar } from '../../components/Navbar';
 
 export const EditarPersonaPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -34,7 +35,7 @@ export const EditarPersonaPage = () => {
             ...personaOriginal,
             nombre: nombreRef.current?.value || '',
             apellido: apellidoRef.current?.value || '',
-            DNI: dniRef.current?.value || '',
+            dni: dniRef.current?.value || '',
             fechaDeNacimiento: fechaRef.current?.value || '',
             genero: generoRef.current?.value || ''
         };
@@ -70,7 +71,7 @@ export const EditarPersonaPage = () => {
 
                 <div className="mb-3">
                     <label>DNI</label>
-                    <input className="form-control" type="text" defaultValue={personaOriginal.DNI} ref={dniRef} />
+                    <input className="form-control" type="text" defaultValue={personaOriginal.dni} ref={dniRef} />
                 </div>
 
                 <div className="mb-3">
@@ -96,6 +97,7 @@ export const EditarPersonaPage = () => {
                     Guardar Cambios
                 </button>
             </form>
+            <Navbar />
         </div>
     );
 };

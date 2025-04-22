@@ -11,23 +11,6 @@
     margin-bottom: 15px;
 }
 
-.boton-verde {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.boton-verde:hover {
-    background-color: #43a047;
-}
-
-
-
 .persona-table {
     width: 100%;
     border-collapse: collapse;
@@ -54,6 +37,17 @@
     background-color: #f9f9f9;
 }
 
+.boton-verde {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
 .ver-button {
     background-color: blue;
     color: whitesmoke;
@@ -74,7 +68,6 @@
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.3s ease;
-
 }
 
 .borrar-button {
@@ -87,15 +80,15 @@
     font-weight: 500;
     transition: background-color 0.3s ease;
 }
-
-
-
-.editar-button:hover {
-    background-color: yellow;
-}
-
-.borrar-button:hover {
-    background-color: red;
+.dueño-button {
+    background-color: gray;
+    color: pink;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .persona-container {
