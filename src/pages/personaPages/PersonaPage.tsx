@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { PersonaModel } from '../../model/PersonaModel';
 import allPersona from '../../api/persona/AllPersonas';
 import { PersonaTable } from '../../components/personaTable/PersonaTable';
-import { Navbar } from '../../components/Navbar';
 
 export const PersonasPage = () => {
     const [personas, setPersonas] = useState<PersonaModel[]>([]);
@@ -19,7 +18,6 @@ export const PersonasPage = () => {
     return (
         <div>
             <PersonaTable personas={personas} onDelete={fetchPersonas} />
-            <Navbar />
         </div>
     );
 };

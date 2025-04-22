@@ -1,5 +1,5 @@
 export type AutoCompleto = {
-    id: number;
+    id?: number;
     marca: string;
     modelo: string;
     año: number;

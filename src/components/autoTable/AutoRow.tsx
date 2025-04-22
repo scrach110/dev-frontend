@@ -9,7 +9,9 @@ export const AutoRow: React.FC<{ auto: AutoModel }> = ({ auto }) => {
         navigate(`/persona/${auto.idPersona}`);
     };
 
-    const VerAutoHandler = () => {};
+    const VerAutoHandler = () => {
+        navigate(`/auto/${auto.id}`) 
+    };
 
     const EditarAutoHandler = () => {};
 

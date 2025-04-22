@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PersonaCompleta from '../../model/PersonaCompleta';
 import { PersonaById } from '../../api/persona/PersonaById';
-import { Navbar } from '../../components/Navbar';
 import { BorrarPersonaButton } from '../../helps/BorrarPersonaButton';
 
 export const PersonaValues = () => {
@@ -28,7 +27,9 @@ export const PersonaValues = () => {
         navigate('/persona/all');
     };
 
-    const AgregarAutoHandler = () => {};
+    const AgregarAutoHandler = () => {
+        navigate(`/auto/add/${idPersona}`);
+    };
 
     return (
         <>
@@ -54,7 +55,7 @@ export const PersonaValues = () => {
                         </tr>
                         <tr>
                             <td className="label">Fecha de Nacimiento</td>
-                            <td>{persona?.fechaDeNacimiento}</td>
+                            <td>{new Date(persona?.fechaDeNacimiento).toLocaleDateString()}</td>
                         </tr>
                         <tr>
                             <td className="label">Género</td>
@@ -82,8 +83,6 @@ export const PersonaValues = () => {
                     </tbody>
                 </table>
             </div>
-
-            <Navbar />
         </>
     );
 };

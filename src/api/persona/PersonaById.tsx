@@ -10,7 +10,7 @@ export const PersonaById = async (idPersona: string) => {
         id: response.data.id,
         nombre: response.data.nombre,
         apellido: response.data.apellido,
-        DNI: response.data.dni,
+        dni: response.data.dni,
         fechaDeNacimiento: response.data.fechaDeNacimiento,
         genero: response.data.genero,
         autos: response.data.autos

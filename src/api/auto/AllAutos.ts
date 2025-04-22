@@ -5,6 +5,7 @@ const allAutos = async () => {
     const response = await AutoApi.get('');
 
     const autos: AutoModel[] = response.data.map((auto: AutoModel) => ({
+        id: auto.id,
         marca: auto.marca,
         modelo: auto.modelo,
         año: auto.año,

@@ -97,7 +97,6 @@ export const EditarPersonaPage = () => {
                     Guardar Cambios
                 </button>
             </form>
-            <Navbar />
         </div>
     );
 };
