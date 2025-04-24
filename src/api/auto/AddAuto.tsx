@@ -1,7 +1,7 @@
-import { AutoCompleto } from "../../model/AutoCompleto";
-import { AutoApi } from "../apiBase/AutoApi";
+import { AutoCompleto } from '../../model/AutoCompleto';
+import { AutoApi } from '../apiBase/AutoApi';
 
-export const AddAuto = async (auto: AutoCompleto) =>{
+export const AddAuto = async (auto: AutoCompleto) => {
     const response = await AutoApi.post('', {
         modelo: auto.modelo,
         marca: auto.marca,
@@ -11,10 +11,8 @@ export const AddAuto = async (auto: AutoCompleto) =>{
         año: auto.año,
         idPersona: auto.idPersona,
         motor: auto.motor
-
     });
     console.log(auto);
-    
 
     return response;
-}
+};

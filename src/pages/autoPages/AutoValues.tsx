@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { AutoCompleto } from "../../model/AutoCompleto";
-import { AutoById } from "../../api/auto/AutoById";
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AutoCompleto } from '../../model/AutoCompleto';
+import { AutoById } from '../../api/auto/AutoById';
 
 export const AutoValue = () => {
-
     const { id } = useParams<{ id: string }>();
     const idAuto = Number(id);
     const [auto, setAuto] = useState<AutoCompleto | null>(null);
@@ -19,21 +18,25 @@ export const AutoValue = () => {
         fetchAuto();
     }, [idAuto]);
 
-    const VerDueñoHandler = () =>{
-        navigate(`/persona/${auto?.idPersona}`)
+    const VerDueñoHandler = () => {
+        navigate(`/persona/${auto?.idPersona}`);
     };
 
-    const EliminarAutoHandler = () =>{};
+    const EliminarAutoHandler = () => {};
 
-    const EditarAutoHandler = () =>{};
+    const EditarAutoHandler = () => {};
 
     return (
         <div className="auto-container">
             <h2 className="titulo"> Detalles del auto</h2>
             <div className="auto-table">
-                <button className="dueño-button" onClick={VerDueñoHandler}>Ver Dueño</button>
+                <button className="dueño-button" onClick={VerDueñoHandler}>
+                    Ver Dueño
+                </button>
                 <button onClick={EliminarAutoHandler}>Eliminar</button>
-                <button className="editar-button" onClick={EditarAutoHandler}>Editar</button>
+                <button className="editar-button" onClick={EditarAutoHandler}>
+                    Editar
+                </button>
                 <tbody>
                     <tr>
                         <td className="label">Marca</td>
@@ -63,4 +66,4 @@ export const AutoValue = () => {
             </div>
         </div>
     );
-}
+};
