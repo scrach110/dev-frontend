@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AutoCompleto } from '../../model/AutoCompleto';
 import { AutoById } from '../../api/auto/AutoById';
+import { BorrarAutoButton } from '../../helps/BorrarAutoButton';
 
 export const AutoValue = () => {
     const { id } = useParams<{ id: string }>();
-    const idAuto = Number(id);
+    const idAuto = String(id);
     const [auto, setAuto] = useState<AutoCompleto | null>(null);
 
     const navigate = useNavigate();
@@ -22,48 +23,63 @@ export const AutoValue = () => {
         navigate(`/persona/${auto?.idPersona}`);
     };
 
-    const EliminarAutoHandler = () => {};
+    const BorrarAutoHandler = () => {
+        navigate('/autos');
+    };
 
-    const EditarAutoHandler = () => {};
+    const EditarAutoHandler = () => {
+        navigate(`/auto/${auto?.id}/edit`);
+    };
 
     return (
-        <div className="auto-container">
-            <h2 className="titulo"> Detalles del auto</h2>
-            <div className="auto-table">
-                <button className="dueño-button" onClick={VerDueñoHandler}>
-                    Ver Dueño
-                </button>
-                <button onClick={EliminarAutoHandler}>Eliminar</button>
-                <button className="editar-button" onClick={EditarAutoHandler}>
-                    Editar
-                </button>
+        <div className="container mt-5">
+            <h2 className="mb-4">Detalles del Auto</h2>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Campo</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
-                        <td className="label">Marca</td>
+                        <td>Marca</td>
                         <td>{auto?.marca}</td>
                     </tr>
                     <tr>
-                        <td className="label">Año</td>
+                        <td>Modelo</td>
+                        <td>{auto?.modelo}</td>
+                    </tr>
+                    <tr>
+                        <td>Año</td>
                         <td>{auto?.año}</td>
                     </tr>
                     <tr>
-                        <td className="label">Patente</td>
+                        <td>Patente</td>
                         <td>{auto?.patente}</td>
                     </tr>
                     <tr>
-                        <td className="label">Motor</td>
+                        <td>Motor</td>
                         <td>{auto?.motor}</td>
                     </tr>
                     <tr>
-                        <td className="label"> Numero de chasis</td>
+                        <td>Número de chasis</td>
                         <td>{auto?.numeroDeChasis}</td>
                     </tr>
                     <tr>
-                        <td className="label">Color</td>
+                        <td>Color</td>
                         <td>{auto?.color}</td>
                     </tr>
                 </tbody>
-            </div>
+            </table>
+
+            <button type="button" className="btn btn-secondary" onClick={VerDueñoHandler}>
+                Ver Dueño
+            </button>
+            <button type="button" className="btn btn-warning" onClick={EditarAutoHandler}>
+                Editar
+            </button>
+            <BorrarAutoButton idAuto={idAuto} onDeleteSuccess={BorrarAutoHandler} />
         </div>
     );
 };

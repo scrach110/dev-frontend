@@ -17,6 +17,7 @@ export const PersonasPage = () => {
 
     return (
         <div>
+            <h2>Lista de Personas</h2>
             <PersonaTable personas={personas} onDelete={fetchPersonas} />
         </div>
     );

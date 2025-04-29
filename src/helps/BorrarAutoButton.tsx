@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { DeleatePersona } from '../api/persona/DeleatePersona';
+import { DeleateAuto } from '../api/auto/DeleateAuto';
 
 interface Props {
-    idPersona: string;
+    idAuto: string;
     onDeleteSuccess: () => void;
 }
 
-export const BorrarPersonaButton: React.FC<Props> = ({ idPersona, onDeleteSuccess }) => {
+export const BorrarAutoButton: React.FC<Props> = ({ idAuto, onDeleteSuccess }) => {
     const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
 
     const handleBorrarClick = () => {
@@ -18,7 +18,7 @@ export const BorrarPersonaButton: React.FC<Props> = ({ idPersona, onDeleteSucces
     };
 
     const handleConfirmar = async () => {
-        const status = await DeleatePersona(idPersona);
+        const status = await DeleateAuto(idAuto);
         if (status === 200 || status === 204) {
             onDeleteSuccess();
         }
@@ -33,7 +33,7 @@ export const BorrarPersonaButton: React.FC<Props> = ({ idPersona, onDeleteSucces
 
             {mostrarConfirmacion && (
                 <div className="popup-confirmacion">
-                    <p>¿Estás seguro que deseas borrar esta persona?</p>
+                    <p>¿Estás seguro que deseas borrar éste auto?</p>
                     <button onClick={handleConfirmar}>Sí, borrar</button>
                     <button onClick={handleCancelar}>Cancelar</button>
                 </div>

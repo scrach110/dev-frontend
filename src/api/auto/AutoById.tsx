@@ -1,8 +1,7 @@
-import { AutoCompleto } from "../../model/AutoCompleto";
-import { AutoApi } from "../apiBase/AutoApi"
+import { AutoCompleto } from '../../model/AutoCompleto';
+import { AutoApi } from '../apiBase/AutoApi';
 
-
-export const AutoById = async(idAuto: number) => {
+export const AutoById = async (idAuto: string) => {
     const response = await AutoApi.get(`/${idAuto}`);
 
     const auto: AutoCompleto = {
@@ -15,10 +14,9 @@ export const AutoById = async(idAuto: number) => {
         numeroDeChasis: response.data.numeroDeChasis,
         patente: response.data.patente,
         idPersona: response.data.idPersona
-    }
+    };
 
     console.log(auto);
-    
 
     return auto;
-}
+};

@@ -6,9 +6,10 @@ export const EditPersona = async (idPersona: string, personaEdit: PersonaComplet
         id: personaEdit.id,
         nombre: personaEdit.nombre,
         apellido: personaEdit.apellido,
-        dni: personaEdit.DNI,
+        dni: personaEdit.dni,
         fechaDeNacimiento: personaEdit.fechaDeNacimiento,
         genero: personaEdit.genero,
+        donanteOrganos: personaEdit.donanteOrganos,
         autos: personaEdit.autos
     });
 

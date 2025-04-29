@@ -6,18 +6,18 @@ import { AutoTable } from '../../components/autoTable/AutoTable';
 export const AutosPage = () => {
     const [autos, setAutos] = useState<AutoModel[]>([]);
 
+    const fetchAutos = async () => {
+        const autosData = await allAutos();
+        setAutos(autosData);
+    };
     useEffect(() => {
-        const fetchAutos = async () => {
-            const autosData = await allAutos();
-            setAutos(autosData);
-        };
         fetchAutos();
     }, []);
 
     return (
         <div>
             <h2> Lista De Autos</h2>
-            <AutoTable autos={autos} />
+            <AutoTable autos={autos} onDeleate={fetchAutos} />
         </div>
     );
 };

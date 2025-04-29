@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { PersonaById } from '../../api/persona/PersonaById';
 import { EditPersona } from '../../api/persona/EditPersona';
 import PersonaCompleta from '../../model/PersonaCompleta';
-import { Navbar } from '../../components/Navbar';
 
 export const EditarPersonaPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -17,6 +16,7 @@ export const EditarPersonaPage = () => {
     const dniRef = useRef<HTMLInputElement>(null);
     const fechaRef = useRef<HTMLInputElement>(null);
     const generoRef = useRef<HTMLSelectElement>(null);
+    const donanteRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const fetchPersona = async () => {
@@ -37,7 +37,8 @@ export const EditarPersonaPage = () => {
             apellido: apellidoRef.current?.value || '',
             dni: dniRef.current?.value || '',
             fechaDeNacimiento: fechaRef.current?.value || '',
-            genero: generoRef.current?.value || ''
+            genero: generoRef.current?.value || '',
+            donanteOrganos: donanteRef.current?.checked || false
         };
 
         const response = await EditPersona(personaId, personaEditada);
@@ -91,6 +92,16 @@ export const EditarPersonaPage = () => {
                         <option value="femenino">Femenino</option>
                         <option value="no-binario">No-binario</option>
                     </select>
+                </div>
+                <div className="mb-3 form-check">
+                    <input
+                        className="form-check-input"
+                        type="checkbox"
+                        id="donanteCheck"
+                        defaultChecked={personaOriginal.donanteOrganos}
+                        ref={donanteRef}
+                    />
+                    <label className="form-check-label">Donante de órganos</label>
                 </div>
 
                 <button type="button" className="btn btn-success" onClick={handleGuardar}>

@@ -19,10 +19,10 @@ export const PersonaRow: React.FC<{ persona: PersonaModel; onDelete: () => void 
             <td>{persona.nombre}</td>
             <td>{persona.apellido}</td>
             <td>{persona.DNI}</td>
-            <button className="ver-button" onClick={verButtonHandler}>
+            <button type="button" class="btn btn-success" onClick={verButtonHandler}>
                 Ver
             </button>
-            <button className="editar-button" onClick={editarButtonHandler}>
+            <button type="button" class="btn btn-warning" onClick={editarButtonHandler}>
                 Editar
             </button>
             <BorrarPersonaButton idPersona={persona.id} onDeleteSuccess={onDelete} />

@@ -13,6 +13,7 @@ export const PersonaById = async (idPersona: string) => {
         dni: response.data.dni,
         fechaDeNacimiento: response.data.fechaDeNacimiento,
         genero: response.data.genero,
+        donanteOrganos: response.data.donanteOrganos,
         autos: response.data.autos
     };
 

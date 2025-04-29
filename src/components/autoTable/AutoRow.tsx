@@ -1,8 +1,9 @@
 import React from 'react';
 import { AutoModel } from '../../model/AutoModel';
 import { useNavigate } from 'react-router-dom';
+import { BorrarAutoButton } from '../../helps/BorrarAutoButton';
 
-export const AutoRow: React.FC<{ auto: AutoModel }> = ({ auto }) => {
+export const AutoRow: React.FC<{ auto: AutoModel; onDeleate: () => void }> = ({ auto, onDeleate }) => {
     const navigate = useNavigate();
 
     const VerDueñoHandler = () => {
@@ -10,10 +11,12 @@ export const AutoRow: React.FC<{ auto: AutoModel }> = ({ auto }) => {
     };
 
     const VerAutoHandler = () => {
-        navigate(`/auto/${auto.id}`) 
+        navigate(`/auto/${auto.id}`);
     };
 
-    const EditarAutoHandler = () => {};
+    const EditarAutoHandler = () => {
+        navigate(`/auto/${auto.id}/edit`);
+    };
 
     return (
         <tr>
@@ -21,16 +24,16 @@ export const AutoRow: React.FC<{ auto: AutoModel }> = ({ auto }) => {
             <td>{auto.modelo}</td>
             <td>{auto.año}</td>
             <td>{auto.patente}</td>
-            <button className="boton-verde" onClick={VerAutoHandler}>
+            <button type="button" class="btn btn-success" onClick={VerAutoHandler}>
                 Ver
             </button>
-            <button className="editar-button" onClick={EditarAutoHandler}>
+            <button type="button" class="btn btn-warning" onClick={EditarAutoHandler}>
                 Editar
             </button>
-            <button className="eliminar-button">Eliminar</button>
-            <button className="dueño-button" onClick={VerDueñoHandler}>
+            <button type="button" class="btn btn-secondary" onClick={VerDueñoHandler}>
                 Ver dueño
             </button>
+            <BorrarAutoButton idAuto={auto.id} onDeleteSuccess={onDeleate} />
         </tr>
     );
 };

@@ -8,7 +8,8 @@ import { AgregarPersonaPage } from '../pages/personaPages/AgregarPersonaPage';
 import { PageTemplate } from '../pages/PageTemplate';
 import { AutoValue } from '../pages/autoPages/AutoValues';
 import { AgregarAuto } from '../pages/autoPages/AgregarAuto';
-//
+import { EditarAuto } from '../pages/autoPages/EditarAuto';
+
 export const AppRouter = createBrowserRouter(
     createRoutesFromElements(
         <>
@@ -21,6 +22,7 @@ export const AppRouter = createBrowserRouter(
                 <Route path="/persona/add" element={<AgregarPersonaPage />} />
                 <Route path="/auto/:id" element={<AutoValue />} />
                 <Route path="/auto/add/:id" element={<AgregarAuto />} />
+                <Route path="/auto/:id/edit" element={<EditarAuto />} />
             </Route>
         </>
     )

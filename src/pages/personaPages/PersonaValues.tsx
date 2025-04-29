@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import PersonaCompleta from '../../model/PersonaCompleta';
 import { PersonaById } from '../../api/persona/PersonaById';
 import { BorrarPersonaButton } from '../../helps/BorrarPersonaButton';
+import { AutosPorPersona } from '../autoPages/AutosPorPersona';
 
 export const PersonaValues = () => {
     const { id } = useParams<{ id: string }>();
@@ -33,52 +34,60 @@ export const PersonaValues = () => {
 
     return (
         <>
-            <div className="persona-container">
+            <div className="container mt-5">
                 <h2 className="titulo">Detalles de la Persona</h2>
-                <table className="persona-table">
-                    <button className="editar-button" onClick={EditarPersonaHandler}>
-                        Editar
-                    </button>
-                    <BorrarPersonaButton idPersona={idPersona} onDeleteSuccess={DeletePersonaHandler} />
-                    <tbody>
+                <button type="button" class="btn btn-warning" onClick={EditarPersonaHandler}>
+                    Editar
+                </button>
+                <BorrarPersonaButton idPersona={idPersona} onDeleteSuccess={DeletePersonaHandler} />
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td className="label">Nombre</td>
+                            <th scope="col">Campo</th>
+                            <th scope="col">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="trable-group-divider">
+                        <tr>
+                            <td>Nombre</td>
                             <td>{persona?.nombre}</td>
                         </tr>
                         <tr>
-                            <td className="label">Apellido</td>
+                            <td>Apellido</td>
                             <td>{persona?.apellido}</td>
                         </tr>
                         <tr>
-                            <td className="label">DNI</td>
+                            <td>DNI</td>
                             <td>{persona?.dni}</td>
                         </tr>
                         <tr>
-                            <td className="label">Fecha de Nacimiento</td>
+                            <td>Fecha de Nacimiento</td>
                             <td>{new Date(persona?.fechaDeNacimiento).toLocaleDateString()}</td>
                         </tr>
                         <tr>
-                            <td className="label">Género</td>
+                            <td>Género</td>
                             <td>{persona?.genero}</td>
                         </tr>
                         <tr>
-                            <td className="label">Autos</td>
-                            <button className="boton-verde" onClick={AgregarAutoHandler}>
-                                Agregar Auto
-                            </button>
+                            <td>Donante de Organos</td>
+                            <td>{persona?.donanteOrganos ? 'Sí' : 'No'}</td>
+                        </tr>
+                        <tr>
+                            <td>Autos</td>
                             <td>
-                                {persona?.autos.length > 0 ? (
-                                    <ul>
-                                        {persona?.autos.map((auto, index) => (
-                                            <li key={index}>
-                                                {auto.marca} - {auto.modelo} - {auto.año} - {auto.patente}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                ) : (
-                                    'No hay plata para autos'
+                                {persona && (
+                                    <AutosPorPersona
+                                        autos={persona.autos}
+                                        onRefresh={async () => {
+                                            const updated = await PersonaById(idPersona);
+                                            setPersona(updated);
+                                        }}
+                                    />
                                 )}
                             </td>
+                            <button type="button" class="btn btn-success" onClick={AgregarAutoHandler}>
+                                Agregar Auto
+                            </button>
                         </tr>
                     </tbody>
                 </table>

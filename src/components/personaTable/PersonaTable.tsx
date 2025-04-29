@@ -10,28 +10,26 @@ export const PersonaTable: React.FC<{ personas: PersonaModel[]; onDelete: () => 
     };
 
     return (
-        <div className="persona-container">
-            <div className="persona-header">
-                <h2>Lista de Personas</h2>
-                <button className="boton-verde" onClick={agregarButtonHandler}>
-                    Agregar Persona
-                </button>
-            </div>
-            <table className="persona-table">
+        <>
+            <button type="button" class="btn btn-primary" onClick={agregarButtonHandler}>
+                Agregar Persona
+            </button>
+
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>DNI</th>
-                        <th>Acciones</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     {personas.map((p) => (
                         <PersonaRow key={p.DNI} persona={p} onDelete={onDelete} />
                     ))}
                 </tbody>
             </table>
-        </div>
+        </>
     );
 };

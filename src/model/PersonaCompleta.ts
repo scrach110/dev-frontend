@@ -7,6 +7,7 @@ type PersonaCompleta = {
     dni: string;
     fechaDeNacimiento: string;
     genero: string;
+    donanteOrganos: boolean;
     autos: AutoModel[];
 };
 
